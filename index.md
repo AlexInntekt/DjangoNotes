@@ -1,25 +1,25 @@
 # Django 2.0.2  -- My notes
 
 ## Environment:  
-  Django 2.0.2  
-  Python 3.7.0   
-  Windows 10 - CMD   
+ - Django 2.0.2  
+ - Python 3.7.0   
+ - Windows 10 - CMD   
     
   
 
 ## Initial Setup
-- run the server to test it in the browser:
-python manage.py runserver
+ run the server to test it in the browser: 
+*python manage.py runserver*
 
 
-- activate virtual enviroment (if windows):
-.\Scripts\activate  (run inside the parent folder of the project)
+ activate virtual enviroment (if windows): 
+*.\Scripts\activate  (run inside the parent folder of the project)*
 
-deactivate it with:
+deactivate it with: 
 .\Scripts\deactivate
 
 then start an app/feature in the src:
-python manage.py startapp nameOfApp
+*python manage.py startapp nameOfApp*
 
 The resulted folder will contain the views.py, that is used for visual content.
   
