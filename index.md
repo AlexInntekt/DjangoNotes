@@ -8,20 +8,78 @@
   
 
 ## Initial Setup
- run the server to test it in the browser: 
-*python manage.py runserver*
+ run the server to test it in the browser:   
+   *python manage.py runserver*
 
 
- activate virtual enviroment (if windows): 
-*.\Scripts\activate  (run inside the parent folder of the project)*
+ activate virtual enviroment (if windows):   
+   *.\Scripts\activate  (run inside the parent folder of the project)*
 
-deactivate it with: 
-.\Scripts\deactivate
+ deactivate it with:   
+   *.\Scripts\deactivate* 
 
-then start an app/feature in the src:
-*python manage.py startapp nameOfApp*
+ then start an app/feature in the src:  
+   *python manage.py startapp nameOfApp*
 
 The resulted folder will contain the views.py, that is used for visual content.
+  
+  
+  
+ 
+## Rendering  
+- The views.py file of the django app will contain the visual content
+of the project. Returning html content with a python fc inside of it:
+
+from django.http import HttpResponse
+def home(request):   
+   #return render(request, "home.html", {})  
+   return HttpResponse("<p> hello from django! </p>")   
+
+or render on-the-spot code:
+
+<img src="capture.png" alt="hi" class="inline"/>
+
+def home(request): 
+ html_var = '398'  
+ html_ = f"""<!DOCTYPE html> 
+ <html lang=en>  
+
+ <head>
+ </head> 
+ <body> 
+  <h1> Hello from django! {html_var} </h1>  
+ </body>
+ </html>   
+ """
+ return HttpResponse(html_)   
+
+You can return much longer html content that will get rendered later on using
+ """ instead of " and a local variable.
+
+
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
 
