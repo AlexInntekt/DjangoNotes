@@ -26,36 +26,14 @@ The resulted folder will contain the views.py, that is used for visual content.
   
   
  
-## Rendering  
-- The views.py file of the django app will contain the visual content
-of the project. Returning html content with a python fc inside of it:
+ 
+ ## urls
+setting up urls in django 2: (!!!different 
 
-from django.http import HttpResponse
-def home(request):   
-   #return render(request, "home.html", {})  
-   return HttpResponse("<p> hello from django! </p>")   
-
-or render on-the-spot code:
-
-<img src="capture.png" alt="hi" class="inline"/>
-
-def home(request): 
- html_var = '398'  
- html_ = f"""<!DOCTYPE html> 
- <html lang=en>  
-
- <head>
- </head> 
- <body> 
-  <h1> Hello from django! {html_var} </h1>  
- </body>
- </html>   
- """
- return HttpResponse(html_)   
-
-You can return much longer html content that will get rendered later on using
- """ instead of " and a local variable.
-
+*from nameOfApp.views import specificPageOfApp*
+*urlpatterns = [*
+   *path('', specificPageOfApp, name=specificPageOfApp)*
+*]*
 
  
   
