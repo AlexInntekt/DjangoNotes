@@ -37,19 +37,36 @@ setting up urls in django 2: (!!!different
 
 
 
-##templates
-create 'templates' folder in src
-create new file 'home' as .html
- "__init__" should only import the settings file where the templates is mentioned
-(base.py)
-*in views.py use:*
-    *def home(request):*
-     *return render(request, "base.html", {})*
+## templates
+- create 'templates' folder in src  
+- create new file 'home' as .html   
+ "__ init__" should only import the settings file where the templates is mentioned    
+(base.py)   
+- in views.py use:  
+    *def home(request):*    
+     *return render(request, "base.html", {})*    
 
 
 
 
 
+## contextVariable
+- Work like procedures arguments. You transfer their value in the rendered html template
+
+- check python documentation   
+- min 0:56:0   
+  
+- In views.py deal with the rendered content. The context variable works like a procedure parameter:   
+*def home(request):*   
+   *return render(request, "base.html", {"svar2": "context variable"})*
+
+- In the html template use {{..}} :   
+  text in html paragraph: *Base html: {{svar2}}*
+
+- You can use a boolean variable inside the html template:  
+ *{% if svar2 != True%}*   
+   *This is true*   
+ *{% endif %}*   
  
   
   
