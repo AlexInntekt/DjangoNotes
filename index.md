@@ -30,10 +30,25 @@ The resulted folder will contain the views.py, that is used for visual content.
  ## urls
 setting up urls in django 2: (!!!different 
 
-*from nameOfApp.views import specificPageOfApp*
-*urlpatterns = [*
-   *path('', specificPageOfApp, name=specificPageOfApp)*
-*]*
+*from nameOfApp.views import specificPageOfApp*   
+*urlpatterns = [*   
+   *path('', specificPageOfApp, name=specificPageOfApp)*  
+*]*   
+
+
+
+##templates
+create 'templates' folder in src
+create new file 'home' as .html
+ "__init__" should only import the settings file where the templates is mentioned
+(base.py)
+*in views.py use:*
+    *def home(request):*
+     *return render(request, "base.html", {})*
+
+
+
+
 
  
   
