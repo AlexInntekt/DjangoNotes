@@ -1,3 +1,10 @@
+<meta http-equiv="content-type"
+content="text/html;charset=utf-8" />
+
+
+&lt;h1&gt; Hello from django! {html_var} &lt;/h1&gt;
+
+
 # Django 2.0.2  -- My notes
 
 ## Environment:  
@@ -24,7 +31,40 @@
 The resulted folder will contain the views.py, that is used for visual content.
   
   
-  
+
+## rendering
+- The views.py file of the django app will contain the visual content
+of the project. Returning html content with a python fc inside of it:
+
+
+*from django.http import HttpResponse*   
+*def home(request):*   
+   *return render(request, "home.html", {})*  
+   *return HttpResponse("&lt;p&gt; hello from django! &lt;/p&gt;")*  
+
+or render on-the-spot code:
+
+*def home(request):*  
+ *html_var = '398'*  
+ *html_ = f""" < !DOCTYPE html >*  
+ 
+ 
+ &lt;html lang=en&gt;   
+ &lt;body&gt;    
+ &lt;h1&gt; Hello from django! {html_var} &lt;/h1&gt;
+ &lt;/body&gt;     
+ &lt;/html&gt;       
+ 
+
+ 
+ """
+ *return HttpResponse(html_)*
+
+- You can return much longer html content that will get rendered later on using
+ """ instead of " and a local variable.
+
+
+
  
  
  ## urls
