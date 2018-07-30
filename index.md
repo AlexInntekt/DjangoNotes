@@ -2,7 +2,7 @@
 content="text/html;charset=utf-8" />
 
 
-&lt;h1&gt; Hello from django! {html_var} &lt;/h1&gt;
+
 
 
 # Django 2.0.2  -- My notes
@@ -104,9 +104,9 @@ setting up urls in django 2: (!!!different
   text in html paragraph: *Base html: {{svar2}}*
 
 - You can use a boolean variable inside the html template:  
- *{% if svar2 != True%}*   
+ *{ % if svar2 != True% }*   
    *This is true*   
- *{% endif %}*   
+ *{ % endif % }*   
  
   
   
