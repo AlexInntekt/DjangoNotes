@@ -51,9 +51,9 @@ setting up urls in django 2: (!!!different
 
 
 ## contextVariable
-- Work like procedures arguments. You transfer their value in the rendered html template
+- Work like procedures arguments. You transfer their value in the rendered html template  
 
-- check python documentation   
+- check python documentation    
 - min 0:56:0   
   
 - In views.py deal with the rendered content. The context variable works like a procedure parameter:   
@@ -70,10 +70,178 @@ setting up urls in django 2: (!!!different
  
   
   
+
+## templateInheritance
+- Copy the rendering function, change the name   
+- In urls.py include the procedures:    
+   from restaurants.views import home, home2, home3    
+- and add the paths:     
+   *urlpatterns = [*  
+    *path('admin/', admin.site.urls),*  
+	*path('home',home, name='home'),*  
+	*path('home2',home2, name='home2'),*  
+	*path('home3',home3, name='home3'),*  
+*]*
+   
+   
+## blockContents  
+- you can use snippets of code in several places in the project   
+- embed the desired code inside:    
+   *{% block content %}    //let's say the file is called index.html*    
+      *your code to reuse*    
+   *{% endblock content %}*   
+   
+- and fetch it with:    
+   *{% extends "index.html" %}*  
+   *{% block content %}*   
+   *{% endblock content %}*   
+
   
   
   
   
+## snippets  
+- you can do the samething using another way:  
+- include a html snippet file using 
+                               *{% include 'path/to/file' %}*   
+
+
+## Lecture #12  
+### Documentation:   
+### https://docs.djangoproject.com/en/2.0/ref/class-based-views/base/  
+
+
+
+## ClassBasedViews  
+ - in views.py:  
+*import the view class from the django framework:*  
+**from django.views import View*  
+ - and write the rendering function:  
+*class ContactView(View):  
+ *def get(self, request, *args, **kwargs):*  
+   *context = {}*  
+   *return render(request, "contact.html", context)*  
+
+- in urls.py: 
+- Import the view in the urls:   
+  **from restaurants.views import home, home2, home3, ContactView*  
+- And mention it in the urls list:   
+  **path('ContactView',ContactView.as_view, name='ContactView'), (in url patterns)*  
+     
+- For using an Id in the url:   
+  Django 1.0.2:  url(r'^ContactView/(?P<id>\d+)$', ContactView.as_view())   
+  Django 2.0.2:  path('ContactView/<int:id>/',ContactView.as_view(), name='ContactView')    
+  
+
+
+
+## Lecture #13
+
+- TemplateView is a template like the previous View.   
+- First import it into views.py:  
+  from django.views.generic.base import TemplateView   
+- And asociate it with a current page:   
+   
+  *class ContactTemplateView(TemplateView):*   
+      *template_name = 'home.html'*   
+   
+- Do the same setup in urls like using a 'View', and instantiate the template with .as_view():   
+* ... path('ContactTemplateView/',ContactTemplateView.as_view(), name='ContactTemplateView') ...* 
+
+  
+
+## Lecture #14   
+- create a persistent structure, the model in models.py, inside the app's folder:   
+  
+*class Restauran(models.Model): *      
+    * name = models.CharField(max_length=120) *  
+  
+- In base.py, mention the name of the django app.   
+- then run these comands each time you add a new line in the above class:   
+  python manage.py makemigrations  
+  python manage.py migrate   
+- add these in admin.py:  
+  from .models import Restauran   
+  admin.site.register.(Restauran)  
+
+- You can access the dashboard at http://127.0.0.1:8000/admin/   
+
+  
+## Lecture 15    
+  - timestamps:  
+   *category      = models.CharField(max_length=120, null=True, blank=True)*    
+   *time_stamp    = models.DateTimeField(auto_now=False, auto_now_add=False, null=True)*   
+   *updated       = models.DateTimeField(auto_now=True)*   
+   *my_date_field = models.DateField(auto_now=False, auto_now_add=False)*   
+
+
+## Lecture 16   
+- Import the module and retrieve the data using:    
+   *queryset = RestaurantsLocation.objects.all()*   
+   
+- You can send the data packet throug the context in the following way:  
+   
+   *context = { "objects_list": queryset }*   
+   *return render(request, template_name, context)*   
+
+
+
+
+
+
+## Lecture 17   Understanding QuerySets   
+- Playing with QuerySets  
+   
+Documentation at: https://docs.djangoproject.com/en/2.0/ref/models/querysets/
+  
+- Enter the python shell with:  
+  * python manage.py shell*  
+    
+- Import the model inside the shell:   
+ *from restaurants.models import RestaurantsLocation*     
+   
+- Retrieve data:   
+   *qs = RestaurantsLocation.objects.all()*   
+  
+- Filter data:
+   *italianDishes = qs.filter(category='italian')*  
+                      or
+   *italianDishes = qs.filter(category__iexact='italian')*   
+   
+Now italianDishes it's an array.
+
+Here we pick an element:  
+*instance = italianDishes[0]*     
+
+Then we can use it as a normal DB object:   
+*print(instance.name)*   
+  
+Edit:  
+*qs.update(category='Mexican')*   
+
+Create an object and save it:   
+*obj = RestaurantLocation()*  
+*obj.name = "blah blah"*  
+.
+.
+
+And save it with:   
+*obj.save()*  
+
+
+- Or another method is by using the builtin function:   
+  *obj = RestaurantsLocation.objects.create(name='McDonalds', category='Fast-Food', location='Everywhere')*   
+
+
+
+
+## Lecture 17   Generic display views  
+  
+https://docs.djangoproject.com/en/2.0/ref/class-based-views/generic-display/   
+  
+- from django.views.generic.base import ListView
+- set up in urls.py
+
   
   
   
