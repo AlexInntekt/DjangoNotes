@@ -287,7 +287,13 @@ https://docs.djangoproject.com/en/2.0/ref/class-based-views/generic-display/
   
   
   
-  
+## Lecture 20   
+### Query access thru shell   
+### After embedding unique slug generators   
+
+*python manage.py shell*   
+*from restaurants.models import RestaurantsLocation*   
+*obj = RestaurantsLocation.objects.get(id=1)*   
   
   
   
