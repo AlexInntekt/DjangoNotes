@@ -127,7 +127,7 @@ setting up urls in django 2: (!!!different
 ## blockContents  
 - you can use snippets of code in several places in the project   
 - embed the desired code inside:    
-   *{% block content %}    //let's say the file is called index.html*    
+   *{% block content %}*    //let's say the file is called index.html   
       *your code to reuse*    
    *{% endblock content %}*   
    
