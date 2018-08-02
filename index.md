@@ -7,25 +7,25 @@
 ## Environment:  
  - Django 2.0.2  
  - Python 3.7.0   
- - Windows 10 - CMD   
+ - Windows 10 - CMD    
     
   
 
-## Initial Setup
- run the server to test it in the browser:   
-   `python manage.py runserver`
+## Initial Setup   
+ run the server to test it in the browser:     
+   `python manage.py runserver` 
 
 
- activate virtual enviroment (if windows):   
-   `.\Scripts\activate  (run inside the parent folder of the project)`
+ activate virtual enviroment (if windows):    
+   `.\Scripts\activate  (run inside the parent folder of the project)`  
 
  deactivate it with:   
-   `.\Scripts\deactivate`
+   `.\Scripts\deactivate`  
 
  then start an app/feature in the src:  
-   `python manage.py startapp nameOfApp`
+   `python manage.py startapp nameOfApp`  
 
-The resulted folder will contain the views.py, that is used for visual content.
+The resulted folder will contain the views.py, that is used for visual content.  
   
   
 
@@ -34,28 +34,28 @@ The resulted folder will contain the views.py, that is used for visual content.
 of the project. Returning html content with a python fc inside of it:
 
 
-`from django.http import HttpResponse`
-`def home(request):` 
-   `return render(request, "home.html", {})`
-   `return HttpResponse("&lt;p&gt; hello from django! &lt;/p&gt;")`
+`from django.http import HttpResponse`  
+`def home(request):`   
+   `return render(request, "home.html", {})`   
+   `return HttpResponse("<p> hello from django! </p>")`  
 
-or render on-the-spot code:
+or render on-the-spot code:   
 
-`def home(request):`  
+`def home(request):`    
  `html_var = '398'` 
- `html_ = f""" < !DOCTYPE html >`
+ `html_ = f""" <!DOCTYPE html>`   
  
  
- `&lt;html lang=en&gt;`    
- `&lt;body&gt;`
- `&lt;h1&gt; Hello from django! {html_var} &lt;/h1&gt;`
- `&lt;/body&gt;`     
- `&lt;/html&gt;`  
+ `<html lang=en>`      
+ `<body>`   
+ `<h1> Hello from django! {html_var} </h1>`   
+ `</body>`       
+ `</html>`    
  
 
  
- """
- `return HttpResponse(html_)`
+ """  
+ `return HttpResponse(html_)`  
 
 - You can return much longer html content that will get rendered later on using
  """ instead of " and a local variable.
@@ -67,10 +67,10 @@ or render on-the-spot code:
  ## urls
 setting up urls in django 2: (!!!different 
 
-`from nameOfApp.views import specificPageOfApp` 
-`urlpatterns = [` 
-   `path('', specificPageOfApp, name=specificPageOfApp)` 
-`]`
+`from nameOfApp.views import specificPageOfApp`  
+`urlpatterns = [`  
+   `path('', specificPageOfApp, name=specificPageOfApp)`  
+`]`   
 
 
 
@@ -80,8 +80,8 @@ setting up urls in django 2: (!!!different
  "__ init__" should only import the settings file where the templates is mentioned    
 (base.py)   
 - in views.py use:  
-    `def home(request):`     
-     `return render(request, "base.html", {})`      
+    `def home(request):`      
+     `return render(request, "base.html", {})`       
 
 
 
@@ -94,16 +94,16 @@ setting up urls in django 2: (!!!different
 - min 0:56:0   
   
 - In views.py deal with the rendered content. The context variable works like a procedure parameter:   
-`def home(request):`  
-   `return render(request, "base.html", {"svar2": "context variable"})`  
+`def home(request):`    
+   `return render(request, "base.html", {"svar2": "context variable"})`   
 
-- In the html template use {{ ..}} :   
-  text in html paragraph: `Base html: {{svar2}}`
+- In the html template use {{ ..}} :     
+  text in html paragraph: `Base html: {{svar2}}`   
 
-- You can use a boolean variable inside the html template:  
- `{ % if svar2 != True% }`   
-   `This is true`   
- `{ % endif % }`   
+- You can use a boolean variable inside the html template:    
+ `{ % if svar2 != True% }`    
+   `This is true`    
+ `{ % endif % }`    
  
   
   
@@ -112,12 +112,12 @@ setting up urls in django 2: (!!!different
 - Copy the rendering function, change the name   
 - In urls.py include the procedures:    
    from restaurants.views import home, home2, home3    
-- and add the paths:     
-   `urlpatterns = [`
-    `path('admin/', admin.site.urls),`  
-	`path('home',home, name='home'),`  
+- and add the paths:      
+   `urlpatterns = [`  
+    `path('admin/', admin.site.urls),`    
+	`path('home',home, name='home'),`    
 	`path('home2',home2, name='home2'),`  
-	`path('home3',home3, name='home3'),`  
+	`path('home3',home3, name='home3'),`   
 `]`
    
   
