@@ -1,4 +1,6 @@
-
+{% raw %}
+   
+{% endraw %}
 
 
 
@@ -121,12 +123,14 @@ setting up urls in django 2: (!!!different
 	`path('home3',home3, name='home3'),`  
 `]`
    
+  
    
 ## blockContents  
 - you can use snippets of code in several places in the project   
 - embed the desired code inside:    
-      
- {{  {% block content %}  }}  //let's say the file is called index.html   
+
+//let's say the file is called index.html     
+ <p>{% block content %}</p>         
       `your code to reuse`    
    `{% endblock content %}`   
    
