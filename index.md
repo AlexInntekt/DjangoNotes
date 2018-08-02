@@ -1,6 +1,3 @@
-{% raw %}
-   
-{% endraw %}
 
 
 
@@ -100,7 +97,7 @@ setting up urls in django 2: (!!!different
 `def home(request):`  
    `return render(request, "base.html", {"svar2": "context variable"})`  
 
-- In the html template use {{..}} :   
+- In the html template use {{ ..}} :   
   text in html paragraph: `Base html: {{svar2}}`
 
 - You can use a boolean variable inside the html template:  
@@ -148,7 +145,7 @@ setting up urls in django 2: (!!!different
 ## snippets  
 - you can do the samething using another way:  
 - include a html snippet file using 
-                               `{% include 'path/to/file' %}`   
+                               `{ % include 'path/to/file' % }`   
 
 
 ## Lecture #12  
