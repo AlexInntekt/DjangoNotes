@@ -129,17 +129,18 @@ setting up urls in django 2: (!!!different
 - you can use snippets of code in several places in the project   
 - embed the desired code inside:    
 
-//let's say the file is called index.html     
- <p>{% block content %}</p>         
+//let's say the file is called index.html 
+
+      `{ % block content % }`       
       `your code to reuse`    
-   `{% endblock content %}`   
+   `{ % endblock content % }`   
    
 - and fetch it with:   
-     {% raw %} 
-   `{% extends "index.html" %}`  
-   `{% block content %}`   
-   `{% endblock content %}`   
-     {% endraw %}   
+   
+   `{ % extends "index.html" % }`  
+   `{ % block content % }`   
+   `{ % endblock content % }`   
+     
    
   
   
