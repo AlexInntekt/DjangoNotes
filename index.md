@@ -1,5 +1,60 @@
 
 
+## Set-up:
+https://www.codingforentrepreneurs.com/blog/install-python-django-on-windows/   
+
+
+## Create a blank project:
+`pip install virtualenv`
+`virtualenv -p python3 .`   
+`.\Scripts\activate`      
+`pip install django==1.11.2`      !install django inside the VM
+`mkdir src && cd src`  
+`django-admin.py startproject cfehome .`    
+
+- Go into appName/src/appName 
+- create a folder "settings"
+- in this "settings" create a file __init__.py
+- find the old file 'settings.py' and rename it 'old_settings.py'
+- copy the content of 'old_settings.py' and paste it into a new file
+called 'base.py' inside of new settings folder
+- in settings/__init__py write 'from .base import *'
+- in base.py, add one more level down in the path at BASE_DIR variable, 
+    adding os.path.dirname( ... ). It will look like this:
+   BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+-add the following in the settings/__init__.py:
+
+`from .production import *`  
+`try:`
+`   from .local import *`  
+`except:`  
+`   pass`  
+
+-in settings folder create file production.py and local.py  
+
+-go in CMD and install some packs:  
+`pip install psycopg2` 
+`pip install gunicorn dj-database-url` 
+`pip install django-crispy-forms` 
+`pip install pillow` 
+
+-Final setup:
+`pip freeze > requirements.txt`  
+
+`python manage.py migrate`  
+`python manage.py createsuperuser`  
+
+-copy content of base.py to local.py and production.py
+
+You can run the server with:
+`python manage.py runserver`  
+
+-in production.py change `debug=false`
+
+
+
+
+
 
 
 # Django 2.0.2  -- My notes
@@ -300,6 +355,16 @@ https://docs.djangoproject.com/en/2.0/ref/class-based-views/generic-display/
   
   
   
+  
+  
+  
+  
+  # Django 1.11.0  -- My notes
+
+## Environment:  
+ - Django 1.11.0  
+ - Python 3.6.0   
+ - Windows 10 - CMD  
   
   
   
